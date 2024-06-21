@@ -3,11 +3,17 @@
 import { QRContext } from "@/context/qr-contex";
 import { useQRCode } from "next-qrcode";
 import { ErrorBoundary } from "next/dist/client/components/error-boundary";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 export default function QRGenerator() {
   const { Canvas } = useQRCode();
-  const { url } = useContext(QRContext);
+  const { url, resetUrl } = useContext(QRContext);
+
+  useEffect(() => {
+    if (url) {
+      resetUrl("");
+    }
+  }, []);
 
   if (url)
     return (
