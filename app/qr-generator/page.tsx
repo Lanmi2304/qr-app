@@ -3,9 +3,9 @@ import QRGenerator from "@/components/qrGenerator/qr-generator";
 
 export default function QRGeneratorPage() {
   return (
-    <main>
+    <>
       <GenerateQR />
       <QRGenerator />
-    </main>
+    </>
   );
 }
