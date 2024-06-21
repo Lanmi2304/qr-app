@@ -36,7 +36,7 @@ export default function QRGenerator() {
   // console.log(Canvas);
   return (
     <>
-      <h1 className="text-center">QR</h1>
+      <p></p>
     </>
   );
 }

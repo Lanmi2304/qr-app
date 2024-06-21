@@ -34,11 +34,7 @@ export default function GenerateQR() {
       }}
     >
       <label htmlFor="name">Enter URL to encode:</label>
-      <h2>
-        <span className="text-orange-400">NOTE:</span> Please make sure that you
-        are following - <span className="text-orange-400">https://</span>
-        www.example.com - convenction
-      </h2>
+      <h2 className="text-orange-500">Generate QR: --Enter text below --</h2>
       <input
         type="text"
         ref={inpRef}

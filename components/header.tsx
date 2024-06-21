@@ -3,7 +3,7 @@ import Link from "next/link";
 const navLinks = [
   { text: "QR Generator", path: "/qr-generator", color: "blue-500" },
   { text: "QR Scanner", path: "/qr-scanner", color: "green-500" },
-  { text: "Scan history", path: "/scan-history", color: "blue-500" },
+  { text: "Generated link history", path: "/scan-history", color: "blue-500" },
 ];
 
 export default function Header() {

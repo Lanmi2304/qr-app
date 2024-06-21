@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Button from "@/components/buttons/Button";
 
 export default function Home() {
@@ -20,10 +19,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* <h1>Chosee between</h1>
-      <Link href="/qr-generator">
-        <h2>QR Code Generator</h2>
-      </Link> */}
     </>
   );
 }
