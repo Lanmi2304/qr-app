@@ -1,9 +1,14 @@
 "use client";
 
-import { Scanner } from "@yudiel/react-qr-scanner";
-import { useState } from "react";
+import { Scanner, useDevices } from "@yudiel/react-qr-scanner";
+import { useEffect, useState } from "react";
 const QRScanner = () => {
   const [result, setResult] = useState<string>("");
+  const devices = useDevices();
+  const [deviceId, setDeviceId] = useState<string | undefined>(undefined);
+
+  console.log(deviceId);
+
   return (
     <>
       <div className="h-screen w-screen flex items-center justify-center ">
@@ -12,7 +17,25 @@ const QRScanner = () => {
             <h1 className="text-center font-semibold text-2xl text-green-500 mb-4">
               SCAN:
             </h1>
-            <Scanner onScan={(result) => setResult(result[0].rawValue)} />
+
+            <select onChange={(e) => setDeviceId(e.target.value)}>
+              <option value={undefined}>Select a device</option>
+              {devices.map((device, index) => (
+                <option key={index} value={device.deviceId}>
+                  {device.label}
+                </option>
+              ))}
+            </select>
+
+            <Scanner
+              onScan={(result) => {
+                // console.log(result);
+                setResult(result[0].rawValue);
+              }}
+              constraints={{
+                deviceId: deviceId,
+              }}
+            />
           </div>
         )}
         {result && (
