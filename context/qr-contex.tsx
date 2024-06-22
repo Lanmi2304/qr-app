@@ -2,11 +2,17 @@
 
 import { createContext, useEffect, useState } from "react";
 
+type HisEl = {
+  date: string;
+  text: string;
+}[];
+
 type CtxType = {
   url?: string;
-  his: string[];
+  his: HisEl;
   generate: (url: string) => void;
   resetUrl: (url: string) => void;
+  hisHandler: (url: string) => void;
 };
 
 export const QRContext = createContext<CtxType>({
@@ -14,6 +20,7 @@ export const QRContext = createContext<CtxType>({
   his: [],
   generate: (url: string) => {},
   resetUrl: (url: string) => {},
+  hisHandler: (url: string) => {},
 });
 
 export default function QRCTXProvider({
@@ -22,7 +29,7 @@ export default function QRCTXProvider({
   children: React.ReactNode;
 }) {
   const [url, setUrl] = useState<string>("");
-  const [his, setHis] = useState<string[]>([]);
+  const [his, setHis] = useState<HisEl>([]);
 
   useEffect(() => {
     if (localStorage.getItem("qr-links")) {
@@ -32,8 +39,15 @@ export default function QRCTXProvider({
 
   const generateHandler = (url: string) => {
     setUrl(url);
+  };
 
-    const updatedArray = [url, ...his];
+  const scanHistoryHandler = (url: string) => {
+    const newHisObj = {
+      date: new Date().toISOString(),
+      text: url,
+    };
+
+    const updatedArray = [newHisObj, ...his];
     setHis(updatedArray);
     localStorage.setItem("qr-links", JSON.stringify(updatedArray));
   };
@@ -43,6 +57,7 @@ export default function QRCTXProvider({
     his,
     generate: generateHandler,
     resetUrl: setUrl,
+    hisHandler: scanHistoryHandler,
   };
 
   return <QRContext.Provider value={ctxValue}>{children}</QRContext.Provider>;

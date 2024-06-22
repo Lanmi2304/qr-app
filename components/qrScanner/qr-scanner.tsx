@@ -1,25 +1,15 @@
 "use client";
 
+import { QRContext } from "@/context/qr-contex";
 import { Scanner, useDevices } from "@yudiel/react-qr-scanner";
 import { Container } from "postcss";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+
 const QRScanner = () => {
+  const { hisHandler } = useContext(QRContext);
   const [result, setResult] = useState<string>("");
   const devices = useDevices();
   const [deviceId, setDeviceId] = useState<string | undefined>(undefined);
-
-  console.log(deviceId);
-
-  const stylesOptions = {
-    container: {
-      padding: "1rem",
-    },
-    video: {
-      "& svg": {
-        fill: "blue",
-      },
-    },
-  };
 
   return (
     <>
@@ -32,10 +22,10 @@ const QRScanner = () => {
 
             <select
               onChange={(e) => setDeviceId(e.target.value)}
-              className="mb-8 text-white bg-transparent border-0 w-40 m-auto"
+              className="mb-8 text-white bg-transparent border-0 text-sm m-auto"
             >
               <option
-                className="bg-bg text-white text-center"
+                className="bg-bg text-white text-center "
                 value={undefined}
               >
                 Select a device
@@ -43,24 +33,26 @@ const QRScanner = () => {
               {devices.map((device, index) => (
                 <option
                   key={index}
-                  className="text-white bg-bg"
+                  className="text-white bg-bg text-center"
                   value={device.deviceId}
                 >
                   {device.label}
                 </option>
               ))}
             </select>
-
-            <Scanner
-              onScan={(result) => {
-                // console.log(result);
-                setResult(result[0].rawValue);
-              }}
-              constraints={{
-                deviceId: deviceId,
-              }}
-              styles={stylesOptions}
-            />
+            <div className="px-4">
+              <Scanner
+                onScan={(result) => {
+                  // console.log(result);
+                  // setGenerateHis()
+                  hisHandler(result[0].rawValue);
+                  setResult(result[0].rawValue);
+                }}
+                constraints={{
+                  deviceId: deviceId,
+                }}
+              />
+            </div>
           </div>
         )}
         {result && (
