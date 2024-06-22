@@ -12,7 +12,7 @@ export default function Button({ href, children, gen }: Props) {
     <Link
       href={href}
       className={`${
-        gen ? "bg-blue-400" : "bg-green-400"
+        gen ? "bg-purple-600" : "bg-green-600"
       } text-white px-6 py-2 rounded-md`}
     >
       {children}

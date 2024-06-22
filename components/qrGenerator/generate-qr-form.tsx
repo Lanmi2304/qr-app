@@ -18,6 +18,7 @@ export default function GenerateQR() {
     if (inpRef.current.value.trim() === "") {
       setErrorMesage("Input must not be empty");
     } else {
+      setErrorMesage("");
       setInputText(inpRef.current.value);
       generate(inpRef.current.value);
     }
@@ -28,28 +29,32 @@ export default function GenerateQR() {
 
   return (
     <form
-      className="w-96 flex flex-col m-auto mt-4 items-center justify-center px-8 py-8 text-blue-500 font-bold text-center gap-4 mb-8"
+      className="w-screen flex flex-col m-auto mt-28 items-center justify-center px-8 py-8 font-bold text-center gap-4 mb-8"
       onSubmit={(e) => {
         formSubmitHandler(e);
       }}
     >
-      <label htmlFor="name">Enter URL to encode:</label>
-      <h2 className="text-orange-500">Generate QR: --Enter text below --</h2>
+      <label htmlFor="name" className="text-white text-3xl">
+        Enter URL to encode:
+      </label>
+      <h2 className="text-purple-400 text-xl truncate">
+        Generate QR: --Enter text below --
+      </h2>
       <input
         type="text"
         ref={inpRef}
         id="name"
-        className="border-2 border-blue-400 font-normal"
+        className="border-2 border-purple-400 font-normal text-white bg-transparent rounded-md py-2 px-4"
       />
       <button
         type="submit"
-        className="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-white hover:text-blue-500 hover:border-2 hover:border-blue-500 hover:underline"
+        className="bg-purple-500 text-white rounded-md px-4 py-2 hover:bg-transparent hover:text-purple-500 hover:border-2 hover:border-purple-500 hover:underline"
       >
         Generate QR
       </button>
-      {errorMessage && <p className="text-red-400">{errorMessage}</p>}
+      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
       {inputText && (
-        <p className="text-green-400 mt-8 -mb-8 text-2xl">{inputText}</p>
+        <p className="text-gray-200 mt-8 -mb-8 px-4 text-md">{inputText}</p>
       )}
     </form>
   );
