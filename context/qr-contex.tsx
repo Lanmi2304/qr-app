@@ -28,7 +28,7 @@ export default function QRCTXProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [url, setUrl] = useState<string>("");
+  const [url, setUrl] = useState("");
   const [his, setHis] = useState<HisEl>([]);
 
   useEffect(() => {

@@ -1,15 +1,16 @@
 "use client";
 
 import { QRContext } from "@/context/qr-contex";
+import { Select } from "@radix-ui/themes";
+
 import { Scanner, useDevices } from "@yudiel/react-qr-scanner";
-import { Container } from "postcss";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 
 const QRScanner = () => {
   const { hisHandler } = useContext(QRContext);
-  const [result, setResult] = useState<string>("");
+  const [result, setResult] = useState("");
   const devices = useDevices();
-  const [deviceId, setDeviceId] = useState<string | undefined>(undefined);
+  const [deviceId, setDeviceId] = useState("");
 
   return (
     <>
@@ -20,8 +21,8 @@ const QRScanner = () => {
               Scan your QR code:
             </h1>
 
-            <select
-              onChange={(e) => setDeviceId(e.target.value)}
+            {/* <select
+              onChange={(e) => setDeviceId(String(e.target.value))}
               className="mb-8 text-white bg-transparent border-0 text-sm m-auto"
             >
               <option
@@ -39,12 +40,11 @@ const QRScanner = () => {
                   {device.label}
                 </option>
               ))}
-            </select>
+            </select> */}
+
             <div className="px-4">
               <Scanner
                 onScan={(result) => {
-                  // console.log(result);
-                  // setGenerateHis()
                   hisHandler(result[0].rawValue);
                   setResult(result[0].rawValue);
                 }}

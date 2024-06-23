@@ -2,11 +2,13 @@
 
 import { QRContext } from "@/context/qr-contex";
 import { FormEvent, useContext, useRef, useState } from "react";
+import Button from "../buttons/Button";
+import Text from "../paragraphs/Text";
 
 export default function GenerateQR() {
   const { generate } = useContext(QRContext);
-  const [errorMessage, setErrorMesage] = useState<string>("");
-  const [inputText, setInputText] = useState<string>("");
+  const [errorMessage, setErrorMesage] = useState("");
+  const [inputText, setInputText] = useState("");
 
   const inpRef = useRef<HTMLInputElement>(null);
 
@@ -29,7 +31,7 @@ export default function GenerateQR() {
 
   return (
     <form
-      className="w-screen flex flex-col m-auto mt-28 items-center justify-center px-8 py-8 font-bold text-center gap-4 mb-8"
+      className="w-screen flex flex-col mx-auto mt-28 items-center justify-center p-8 font-bold text-center gap-4 mb-8"
       onSubmit={(e) => {
         formSubmitHandler(e);
       }}
@@ -37,25 +39,16 @@ export default function GenerateQR() {
       <label htmlFor="name" className="text-white text-3xl">
         Enter URL to encode:
       </label>
-      <h2 className="text-purple-400 text-xl truncate">
-        Generate QR: --Enter text below --
-      </h2>
+      <h1>Generate QR: --Enter text below --</h1>
       <input
-        type="text"
         ref={inpRef}
         id="name"
-        className="border-2 border-purple-400 font-normal text-white bg-transparent rounded-md py-2 px-4"
+        placeholder="Enter text to generate"
+        className="bg-transparent border-2 border-purple-600 rounded-md p-2 text-white focus:border-white"
       />
-      <button
-        type="submit"
-        className="bg-purple-500 text-white rounded-md px-4 py-2 hover:bg-transparent hover:text-purple-500 hover:border-2 hover:border-purple-500 hover:underline"
-      >
-        Generate QR
-      </button>
-      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-      {inputText && (
-        <p className="text-gray-200 mt-8 -mb-8 px-4 text-md">{inputText}</p>
-      )}
+      <Button type="submit">Generate QR</Button>
+      {errorMessage && <Text error={true}>{errorMessage}</Text>}
+      {inputText && <Text>{inputText}</Text>}
     </form>
   );
 }

@@ -1,21 +1,18 @@
-import Link from "next/link";
-import { ReactNode } from "react";
+import { cn } from "@/lib/utils";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 
 type Props = {
-  href: string;
   children: ReactNode;
-  gen?: boolean;
-};
+  className?: string;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export default function Button({ href, children, gen }: Props) {
+export default function Button({ children, className, ...props }: Props) {
   return (
-    <Link
-      href={href}
-      className={`${
-        gen ? "bg-purple-600" : "bg-green-600"
-      } text-white px-6 py-2 rounded-md`}
+    <button
+      className={cn("rounded-md text-white px-4 py-2 bg-purple-500", className)}
+      {...props}
     >
       {children}
-    </Link>
+    </button>
   );
 }
