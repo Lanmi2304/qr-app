@@ -28,9 +28,12 @@ const QRScanner = () => {
 
             <SelectEl
               items={devices}
-              deviceID={deviceID}
-              setDeviceID={setDeviceID}
+              labelTitle="Select a device"
+              label="Devices"
+              value={deviceID}
+              setValue={setDeviceID}
             />
+
             <div className="px-4">
               <Scanner
                 onScan={(result) => {

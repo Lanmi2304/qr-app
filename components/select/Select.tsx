@@ -1,51 +1,55 @@
-import React, { ReactNode, useContext } from "react";
+import React, { ReactNode } from "react";
 import * as Select from "@radix-ui/react-select";
 import classnames from "classnames";
 
-import {
-  CheckIcon,
-  ChevronDownIcon,
-  ChevronUpIcon,
-} from "@radix-ui/react-icons";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
+
+type Option = {
+  value: string;
+  label: string;
+}[];
+
+type MediaDeviceInfo = {
+  deviceId: string;
+  groupId: string;
+  kind: string;
+  label: string;
+}[];
 
 type SelectProps = {
-  items: MediaDeviceInfo[];
-  deviceID: string;
-  setDeviceID: (deviceID: string) => void;
+  items: Option | MediaDeviceInfo;
+  labelTitle: string;
+  label: string;
+  value: string;
+  setValue: (deviceID: string) => void;
 };
 
-function SelectEl({ items, deviceID, setDeviceID }: SelectProps) {
+function SelectEl({ items, labelTitle, label, value, setValue }: SelectProps) {
   return (
     <div className="relative mb-20 w-screen">
       <div className="absolute mb-10 mx-auto z-20">
-        <Select.Root value={deviceID} onValueChange={setDeviceID}>
+        <Select.Root value={value} onValueChange={setValue}>
           <Select.Trigger className=" flex w-96 max-h-10 px-6 py-2 text-white justify-between bg-bg rounded-lg">
-            <Select.Value
-              aria-valuetext={deviceID}
-              placeholder="Select a Device"
-            />
+            <Select.Value aria-valuetext={value} placeholder={labelTitle} />
             <Select.Icon className="text-purple-800">
               <ChevronDownIcon />
             </Select.Icon>
           </Select.Trigger>
 
-          <Select.Content className="w-96 overflow-hidden  bg-bg text-red-500 rounded-md shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)]">
+          <Select.Content className="w-96 overflow-hidden bg-bg text-red-500 rounded-md ">
             <Select.Group>
               <Select.Label className="text-pink-700 font-semibold px-4 py-2 text-xl">
-                Devices
+                {label}
               </Select.Label>
-              {items.map((device, index) => (
+              {items?.map((item, index) => (
                 <SelectItem
                   key={index}
-                  value={device.deviceId}
+                  value={item.label}
                   className="p-4 cursor-pointer"
                 >
-                  <span className="text-white">{device.label}</span>
+                  <span className="text-white">{item.label}</span>
                 </SelectItem>
               ))}
-              <SelectItem value="kurac" className="px-4 py-8 cursor-pointer">
-                <span className="text-white">Shaomi 123</span>
-              </SelectItem>
             </Select.Group>
           </Select.Content>
         </Select.Root>
@@ -65,7 +69,7 @@ const SelectItem = React.forwardRef<HTMLDivElement, Props>(
     return (
       <Select.Item
         className={classnames(
-          "text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] pr-[35px] pl-[25px] relative select-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1",
+          "text-[13px] leading-none rounded-[3px] flex items-center h-[25px] pr-[35px] pl-[25px] relative select-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none",
           className
         )}
         {...props}
