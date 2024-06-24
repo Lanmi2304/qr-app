@@ -26,30 +26,6 @@ const QRScanner = () => {
               Scan your QR code:
             </h1>
 
-            {/* <select
-              onChange={(e) => {
-                console.log(e.target.value);
-                setDeviceId(String(e.target.value));
-              }}
-              className="mb-8 text-white bg-transparent border-0 text-sm m-auto"
-            >
-              <option
-                className="bg-bg text-white text-center "
-                value={undefined}
-              >
-                Select a device
-              </option>
-              {devices.map((device, index) => (
-                <option
-                  key={index}
-                  className="text-white bg-bg text-center"
-                  value={device.deviceId}
-                >
-                  {device.label}
-                </option>
-              ))}
-            </select> */}
-
             <SelectEl
               items={devices}
               deviceID={deviceID}

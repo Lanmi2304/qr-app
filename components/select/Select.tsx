@@ -1,6 +1,7 @@
 import React, { ReactNode, useContext } from "react";
 import * as Select from "@radix-ui/react-select";
 import classnames from "classnames";
+
 import {
   CheckIcon,
   ChevronDownIcon,
@@ -14,44 +15,42 @@ type SelectProps = {
 };
 
 function SelectEl({ items, deviceID, setDeviceID }: SelectProps) {
-  //   console.log(items);
   return (
-    <Select.Root value={deviceID} onValueChange={setDeviceID}>
-      <Select.Trigger
-        className="inline-flex mt-20 items-center justify-center rounded px-[15px] text-[13px] leading-none h-[35px] gap-[5px] bg-white text-violet11 shadow-[0_2px_10px] shadow-black/10 hover:bg-mauve3 focus:shadow-[0_0_0_2px] focus:shadow-black data-[placeholder]:text-violet9 outline-none"
-        aria-label="Food"
-      >
-        <Select.Value placeholder="Select a device" />
+    <div className="relative mb-20 w-screen">
+      <div className="absolute mb-10 mx-auto z-20">
+        <Select.Root value={deviceID} onValueChange={setDeviceID}>
+          <Select.Trigger className=" flex w-96 max-h-10 px-6 py-2 text-white justify-between bg-bg rounded-lg">
+            <Select.Value
+              aria-valuetext={deviceID}
+              placeholder="Select a Device"
+            />
+            <Select.Icon className="text-purple-800">
+              <ChevronDownIcon />
+            </Select.Icon>
+          </Select.Trigger>
 
-        <Select.Icon className="text-violet11">
-          <ChevronDownIcon />
-        </Select.Icon>
-      </Select.Trigger>
-      <Select.Portal>
-        <Select.Content className="overflow-hidden bg-white rounded-md shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)]">
-          <Select.ScrollUpButton className="flex items-center justify-center h-[25px] bg-white text-violet11 cursor-default">
-            <ChevronUpIcon />
-          </Select.ScrollUpButton>
-          <Select.Viewport className="p-[5px]">
+          <Select.Content className="w-96 overflow-hidden  bg-bg text-red-500 rounded-md shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)]">
             <Select.Group>
-              <Select.Label className="px-[25px] text-xs leading-[25px] text-mauve11">
+              <Select.Label className="text-pink-700 font-semibold px-4 py-2 text-xl">
                 Devices
               </Select.Label>
-
               {items.map((device, index) => (
-                <SelectItem key={index} value={device.deviceId}>
-                  {device.label}
+                <SelectItem
+                  key={index}
+                  value={device.deviceId}
+                  className="p-4 cursor-pointer"
+                >
+                  <span className="text-white">{device.label}</span>
                 </SelectItem>
               ))}
-              <SelectItem value="kurac">Kurac</SelectItem>
+              <SelectItem value="kurac" className="px-4 py-8 cursor-pointer">
+                <span className="text-white">Shaomi 123</span>
+              </SelectItem>
             </Select.Group>
-          </Select.Viewport>
-          <Select.ScrollDownButton className="flex items-center justify-center h-[25px] bg-white text-violet11 cursor-default">
-            <ChevronDownIcon />
-          </Select.ScrollDownButton>
-        </Select.Content>
-      </Select.Portal>
-    </Select.Root>
+          </Select.Content>
+        </Select.Root>
+      </div>
+    </div>
   );
 }
 
@@ -59,8 +58,6 @@ interface Props {
   children: ReactNode;
   value: string;
   className?: string;
-  // deviceID: string;
-  // setDeviceID: (deviceID: string) => void;
 }
 
 const SelectItem = React.forwardRef<HTMLDivElement, Props>(
@@ -75,9 +72,6 @@ const SelectItem = React.forwardRef<HTMLDivElement, Props>(
         ref={forwardedRef}
       >
         <Select.ItemText>{children}</Select.ItemText>
-        <Select.ItemIndicator className="absolute left-0 w-[25px] inline-flex items-center justify-center">
-          <CheckIcon />
-        </Select.ItemIndicator>
       </Select.Item>
     );
   }
