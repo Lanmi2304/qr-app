@@ -5,8 +5,8 @@ import classnames from "classnames";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 
 type Option = {
-  value: string;
   label: string;
+  value: string;
 }[];
 
 type MediaDeviceInfo = {
