@@ -1,16 +1,21 @@
 "use client";
 
 import { QRContext } from "@/context/qr-contex";
-import { Select } from "@radix-ui/themes";
 
 import { Scanner, useDevices } from "@yudiel/react-qr-scanner";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+
+import SelectEl from "../select/Select";
 
 const QRScanner = () => {
   const { hisHandler } = useContext(QRContext);
   const [result, setResult] = useState("");
   const devices = useDevices();
-  const [deviceId, setDeviceId] = useState("");
+  const [deviceID, setDeviceID] = useState("");
+
+  useEffect(() => {
+    console.log(deviceID);
+  }, [deviceID]);
 
   return (
     <>
@@ -22,7 +27,10 @@ const QRScanner = () => {
             </h1>
 
             {/* <select
-              onChange={(e) => setDeviceId(String(e.target.value))}
+              onChange={(e) => {
+                console.log(e.target.value);
+                setDeviceId(String(e.target.value));
+              }}
               className="mb-8 text-white bg-transparent border-0 text-sm m-auto"
             >
               <option
@@ -42,6 +50,11 @@ const QRScanner = () => {
               ))}
             </select> */}
 
+            <SelectEl
+              items={devices}
+              deviceID={deviceID}
+              setDeviceID={setDeviceID}
+            />
             <div className="px-4">
               <Scanner
                 onScan={(result) => {
@@ -49,7 +62,7 @@ const QRScanner = () => {
                   setResult(result[0].rawValue);
                 }}
                 constraints={{
-                  deviceId: deviceId,
+                  deviceId: deviceID,
                 }}
               />
             </div>

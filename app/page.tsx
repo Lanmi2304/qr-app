@@ -1,12 +1,9 @@
 import Button from "@/components/buttons/Button";
 import Link from "next/link";
-import SelectEl from "./test1/page";
-import SelectDemo from "./test1/page";
 
 export default function Home() {
   return (
     <>
-      <SelectDemo />
       <section className="w-screen h-screen flex items-center justify-center relative m-auto">
         <div className="flex flex-col">
           <h1 className="text-4xl font-semibold mb-8 text-gray-100 text-center">
