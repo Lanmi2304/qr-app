@@ -23,7 +23,7 @@ export default function ScanHistory() {
           {his.map((link) => (
             <div
               key={link.text}
-              className="bg-bg w-screen max-h-60 mb-4 flex flex-col overflow-hidden"
+              className="bg-bgk w-screen max-h-60 mb-4 flex flex-col overflow-hidden"
             >
               <p className="mt-4 text-gray-300 pb-4 px-4">
                 <span className="font-semibold text-xl text-pink-800">

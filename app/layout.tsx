@@ -5,7 +5,7 @@ import "./globals.css";
 import QRCTXProvider from "@/context/qr-contex";
 import Header from "@/components/header";
 import { ThemeProvider } from "next-themes";
-import ToggleTheme from "@/components/toggle-theme";
+import { ThemeSwitch } from "@/components/toggle-theme";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,9 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className} suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="system">
           <Header />
-          <ToggleTheme />
+          <ThemeSwitch />
           <QRCTXProvider>{children}</QRCTXProvider>
         </ThemeProvider>
       </body>
