@@ -4,6 +4,8 @@ import "@radix-ui/themes/styles.css";
 import "./globals.css";
 import QRCTXProvider from "@/context/qr-contex";
 import Header from "@/components/header";
+import { ThemeProvider } from "next-themes";
+import ToggleTheme from "@/components/toggle-theme";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,10 +20,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={inter.className} suppressHydrationWarning>
       <body className={inter.className}>
-        <Header />
-        <QRCTXProvider>{children}</QRCTXProvider>
+        <ThemeProvider defaultTheme="system" enableSystem>
+          <Header />
+          <ToggleTheme />
+          <QRCTXProvider>{children}</QRCTXProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

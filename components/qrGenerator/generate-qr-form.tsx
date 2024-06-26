@@ -36,15 +36,15 @@ export default function GenerateQR() {
         formSubmitHandler(e);
       }}
     >
-      <label htmlFor="name" className="text-white text-3xl">
+      <label htmlFor="name" className="text-text text-3xl">
         Enter URL to encode:
       </label>
-      <h1>Generate QR: --Enter text below --</h1>
+      <h1 className="text-text">Generate QR: --Enter text below --</h1>
       <input
         ref={inpRef}
         id="name"
         placeholder="Enter text to generate"
-        className="bg-transparent border-2 border-purple-600 rounded-md p-2 text-white focus:border-white"
+        className="bg-transparent border-2 border-purple-600 rounded-md p-2 text-text focus:border-white"
       />
       <Button type="submit">Generate QR</Button>
       {errorMessage && <Text error={true}>{errorMessage}</Text>}

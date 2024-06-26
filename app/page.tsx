@@ -6,9 +6,9 @@ export default function Home() {
     <>
       <section className="w-screen h-screen flex items-center justify-center relative m-auto">
         <div className="flex flex-col">
-          <h1 className="text-4xl font-semibold mb-8 text-gray-100 text-center">
-            <span className="text-purple-600">Create</span> or
-            <span className="text-green-400"> Scan</span> your
+          <h1 className="text-4xl font-semibold mb-8 text-text text-center">
+            <span className="text-span-purple">Create</span> or
+            <span className="text-span-green"> Scan</span> your
             <span className="text-orange-400"> QR</span>
           </h1>
 
