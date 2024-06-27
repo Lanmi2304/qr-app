@@ -2,7 +2,7 @@
 
 import { QRContext } from "@/context/qr-context";
 import { useQRCode } from "next-qrcode";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 export default function QRGenerator() {
   const { Canvas } = useQRCode();
