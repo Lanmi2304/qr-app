@@ -28,7 +28,7 @@ export const ThemeSwitch = () => {
 
   return (
     <form>
-      <div className="flex items-center absolute top-4 right-16 z-40 sm:top-2 sm:right-6">
+      <div className="flex items-center fixed top-4 right-16 z-40 sm:top-2 sm:right-6">
         <label
           className="text-text text-sm leading-none pr-[15px]"
           htmlFor="airplane-mode"

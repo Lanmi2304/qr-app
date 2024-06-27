@@ -28,7 +28,7 @@ export default function GenerateQR() {
 
   return (
     <form
-      className="w-screen flex flex-col mx-auto mt-28 items-center justify-center p-8 font-bold text-center gap-4 mb-8"
+      className="w-screen flex flex-col mx-auto mt-20 items-center justify-center p-8 font-bold text-center gap-4 mb-8"
       onSubmit={handleSubmit(onSubmit)}
     >
       <label htmlFor="name" className="text-text text-3xl">
