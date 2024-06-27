@@ -6,13 +6,7 @@ import { useContext, useEffect } from "react";
 
 export default function QRGenerator() {
   const { Canvas } = useQRCode();
-  const { url, resetUrl } = useContext(QRContext);
-
-  useEffect(() => {
-    if (url) {
-      resetUrl("");
-    }
-  });
+  const { url } = useContext(QRContext);
 
   if (url)
     return (

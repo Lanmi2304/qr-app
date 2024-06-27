@@ -11,16 +11,14 @@ type CtxType = {
   url?: string;
   his: HisEl;
   generate: (url: string) => void;
-  resetUrl: (url: string) => void;
   hisHandler: (url: string) => void;
 };
 
 export const QRContext = createContext<CtxType>({
   url: "",
   his: [],
-  generate: (url: string) => {},
-  resetUrl: (url: string) => {},
-  hisHandler: (url: string) => {},
+  generate: (url: string) => void {},
+  hisHandler: (url: string) => void {},
 });
 
 export default function QRCTXProvider({
@@ -56,7 +54,6 @@ export default function QRCTXProvider({
     url,
     his,
     generate: generateHandler,
-    resetUrl: setUrl,
     hisHandler: scanHistoryHandler,
   };
 
