@@ -1,13 +1,13 @@
 "use client";
 
-import { QRContext } from "@/context/qr-contex";
+import { QRContext } from "@/context/qr-context";
 import { FormEvent, useContext, useRef, useState } from "react";
 import Button from "../buttons/Button";
 import Text from "../paragraphs/Text";
 
 export default function GenerateQR() {
   const { generate } = useContext(QRContext);
-  const [errorMessage, setErrorMesage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [inputText, setInputText] = useState("");
 
   const inpRef = useRef<HTMLInputElement>(null);
@@ -18,9 +18,9 @@ export default function GenerateQR() {
     if (!inpRef.current) return;
 
     if (inpRef.current.value.trim() === "") {
-      setErrorMesage("Input must not be empty");
+      setErrorMessage("Input must not be empty");
     } else {
-      setErrorMesage("");
+      setErrorMessage("");
       setInputText(inpRef.current.value);
       generate(inpRef.current.value);
     }

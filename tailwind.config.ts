@@ -19,10 +19,11 @@ const config: Config = {
         "span-green": "rgb(var(--color-span-green) / <alpha-value>)",
         text: "rgb(var(--color-text) / 1)",
         "menu-btn": "rgb(var(--color-menu-btn) /1)",
+        "select-bkg": "rgb(var(--color-select-bkg)  /1)",
       },
     },
   },
-  darkMode: "selector",
+  darkMode: "class",
   plugins: [],
 };
 export default config;

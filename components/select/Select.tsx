@@ -29,16 +29,16 @@ function SelectEl({ items, labelTitle, label, value, setValue }: SelectProps) {
     <div className="relative mb-20 w-screen">
       <div className="absolute mb-10 mx-auto z-20">
         <Select.Root value={value} onValueChange={setValue}>
-          <Select.Trigger className=" flex w-96 max-h-10 px-6 py-2 text-white justify-between bg-bg rounded-lg">
+          <Select.Trigger className=" flex w-96 max-h-10 px-6 py-2 text-text justify-between bg-select-bkg rounded-lg">
             <Select.Value aria-valuetext={value} placeholder={labelTitle} />
             <Select.Icon className="text-purple-800">
               <ChevronDownIcon />
             </Select.Icon>
           </Select.Trigger>
 
-          <Select.Content className="w-96 overflow-hidden bg-bg text-red-500 rounded-md ">
+          <Select.Content className="w-96 overflow-hidden bg-select-bkg z-20 text-text rounded-md ">
             <Select.Group>
-              <Select.Label className="text-pink-700 font-semibold px-4 py-2 text-xl">
+              <Select.Label className="text-purple-700 font-semibold px-4 py-2 text-xl">
                 {label}
               </Select.Label>
               {items?.map((item, index) => (
@@ -47,7 +47,7 @@ function SelectEl({ items, labelTitle, label, value, setValue }: SelectProps) {
                   value={item.label}
                   className="p-4 cursor-pointer"
                 >
-                  <span className="text-white">{item.label}</span>
+                  <span className="text-text">{item.label}</span>
                 </SelectItem>
               ))}
             </Select.Group>

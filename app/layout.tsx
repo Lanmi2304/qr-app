@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@radix-ui/themes/styles.css";
 import "./globals.css";
-import QRCTXProvider from "@/context/qr-contex";
+import QRCTXProvider from "@/context/qr-context";
 import Header from "@/components/header";
 import { ThemeProvider } from "next-themes";
 import { ThemeSwitch } from "@/components/toggle-theme";

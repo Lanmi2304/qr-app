@@ -1,8 +1,7 @@
 "use client";
 
-import { QRContext } from "@/context/qr-contex";
+import { QRContext } from "@/context/qr-context";
 import { useQRCode } from "next-qrcode";
-import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import { useContext, useEffect } from "react";
 
 export default function QRGenerator() {
@@ -13,11 +12,11 @@ export default function QRGenerator() {
     if (url) {
       resetUrl("");
     }
-  }, []);
+  });
 
   if (url)
     return (
-      <div className="m-auto flex justify-center">
+      <div className="m-auto flex justify-center mb-8">
         <Canvas
           text={`${url}`}
           options={{
@@ -33,7 +32,7 @@ export default function QRGenerator() {
         />
       </div>
     );
-  // console.log(Canvas);
+
   return (
     <>
       <p></p>

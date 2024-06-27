@@ -2,8 +2,6 @@
 
 import { createContext, useEffect, useState } from "react";
 
-import { useTheme } from "next-themes";
-
 type HisEl = {
   date: string;
   text: string;
