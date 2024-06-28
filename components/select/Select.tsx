@@ -34,7 +34,11 @@ function SelectEl({ items, labelTitle, label, value, setValue }: SelectProps) {
   return (
     <div className="relative mb-20 w-screen">
       <div className="absolute mb-10 mx-auto z-20">
-        <Select.Root value={value} onValueChange={setValue}>
+        <Select.Root
+          value={value}
+          onValueChange={setValue}
+          defaultValue={value}
+        >
           <Select.Trigger className=" flex w-96 max-h-10 px-6 py-2 text-text justify-between bg-select-bkg rounded-lg">
             <Select.Value aria-valuetext={value} placeholder={labelTitle} />
             <Select.Icon className="text-purple-800">
