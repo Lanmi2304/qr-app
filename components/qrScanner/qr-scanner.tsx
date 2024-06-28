@@ -30,19 +30,21 @@ const QRScanner = () => {
   return (
     <>
       <div className="h-screen w-screen overflow-hidden flex items-center justify-center ">
-        {!result && deviceID && (
+        {!result && (
           <div className="w-96 m-auto mt-8 flex flex-col justify-center">
             <h1 className="text-center text-3xl text-text mb-4 mt-20">
               Scan your QR code:
             </h1>
 
-            <SelectEl
-              items={formattedDevicesForSelect}
-              labelTitle="Select a device"
-              label="Devices"
-              value={deviceID}
-              setValue={setDeviceID}
-            />
+            {deviceID && (
+              <SelectEl
+                items={formattedDevicesForSelect}
+                labelTitle="Select a device"
+                label="Devices"
+                value={deviceID}
+                setValue={setDeviceID}
+              />
+            )}
 
             <div className="px-4">
               <Scanner
@@ -51,7 +53,7 @@ const QRScanner = () => {
                   setResult(result[0].rawValue);
                 }}
                 constraints={{
-                  deviceId: deviceID,
+                  deviceId: deviceID ?? "",
                 }}
               />
             </div>
