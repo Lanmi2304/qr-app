@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect } from "react";
 import * as Select from "@radix-ui/react-select";
 import classnames from "classnames";
 
@@ -25,6 +25,12 @@ type SelectProps = {
 };
 
 function SelectEl({ items, labelTitle, label, value, setValue }: SelectProps) {
+  // useEffect(() => {
+  //   if (!value) return;
+  //   setValue(value);
+  // }, [value, setValue]);
+
+  console.log(value);
   return (
     <div className="relative mb-20 w-screen">
       <div className="absolute mb-10 mx-auto z-20">
