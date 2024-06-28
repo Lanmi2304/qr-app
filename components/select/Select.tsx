@@ -16,8 +16,13 @@ type MediaDeviceInfo = {
   label: string;
 }[];
 
+type Item = {
+  label: string;
+  value: string;
+}[];
+
 type SelectProps = {
-  items: Option | MediaDeviceInfo;
+  items: Item;
   labelTitle: string;
   label: string;
   value: string;
@@ -37,7 +42,7 @@ function SelectEl({ items, labelTitle, label, value, setValue }: SelectProps) {
         <Select.Root
           value={value}
           onValueChange={setValue}
-          defaultValue={value}
+          defaultValue={items[0].value}
         >
           <Select.Trigger className=" flex w-96 max-h-10 px-6 py-2 text-text justify-between bg-select-bkg rounded-lg">
             <Select.Value aria-valuetext={value} placeholder={labelTitle} />
@@ -54,7 +59,7 @@ function SelectEl({ items, labelTitle, label, value, setValue }: SelectProps) {
               {items?.map((item, index) => (
                 <SelectItem
                   key={index}
-                  value={item.label}
+                  value={item.value}
                   className="p-4 cursor-pointer"
                 >
                   <span className="text-text">{item.label}</span>
