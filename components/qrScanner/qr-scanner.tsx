@@ -15,7 +15,7 @@ const QRScanner = () => {
   const [deviceID, setDeviceID] = useState<string | null>(null);
 
   useEffect(() => {
-    if (devices.length) {
+    if (devices.length > 0) {
       setDeviceID(devices[0].deviceId);
     }
   }, [devices]);
@@ -27,6 +27,10 @@ const QRScanner = () => {
     };
   });
 
+  navigator.mediaDevices;
+
+  console.log(devices);
+
   return (
     <>
       <div className="h-screen w-screen overflow-hidden flex items-center justify-center ">
@@ -35,6 +39,8 @@ const QRScanner = () => {
             <h1 className="text-center text-3xl text-text mb-4 mt-20">
               Scan your QR code:
             </h1>
+
+            {deviceID}
 
             {deviceID && (
               <SelectEl
