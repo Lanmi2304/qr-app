@@ -22,10 +22,9 @@ export default function Header() {
 
   return (
     <>
-      {" "}
       <FontAwesomeIcon
         icon={faBars}
-        className="text-menu-btn block fixed top-4 z-50 right-4 text-4xl sm:hidden"
+        className="text-menu-btn block fixed top-4 z-50 right-4 text-4xl sm:hidden size-9"
         onClick={() => setActiveMenu((prev) => !prev)}
       />
       <ul
@@ -39,7 +38,7 @@ export default function Header() {
             <Link
               href={link.path}
               className={cn(
-                `${link.path === activeLink?.path && "text-purple-500"}`
+                link.path === activeLink?.path && "text-purple-500"
               )}
             >
               {link.text}
