@@ -11,7 +11,7 @@ const QRScanner = () => {
   const { hisHandler } = useContext(QRContext);
   const [result, setResult] = useState("");
   const devices = useDevices();
-  const [deviceID, setDeviceID] = useState("");
+  const [deviceID, setDeviceID] = useState(devices[0].deviceId);
 
   return (
     <>
